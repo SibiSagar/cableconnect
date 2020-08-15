@@ -1,0 +1,121 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign in User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ion-padding">
+    <ion-card>
+      <div class="ion-text-center ion-padding-top">
+        <b style="font-size: large; color: #7a92f3;"
+          >Welcome To Cable Connect</b
+        >
+      </div>
+
+      <div class="ion-text-center ion-padding">
+        <b>Life made simple</b>
+      </div>
+    </ion-card>
+
+    <div class="ion-text-center">
+      <ion-card>
+        <ion-grid>
+          <div class="ion-text-center">
+            <ion-row>
+              <ion-col>
+                <h4 style="font-weight: 700; font-size: xx-large;">
+                  Login
+                </h4>
+              </ion-col>
+            </ion-row>
+          </div>
+          <form
+            class="form"
+            [formGroup]="validationForm"
+            (ngSubmit)="loginUser(validationForm.value)"
+          >
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <ion-item>
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input formControlName="email" type="text"></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container
+                    *ngFor="let validation of validation_messages.email"
+                  >
+                    <div
+                      class="error-message"
+                      *ngIf="validationForm.get('email').hasError(validation.type) && (validationForm.get('email').dirty || validationForm.get('email').touched)"
+                    >
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+            <br />
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-input
+                    type="Password"
+                    formControlName="password"
+                  ></ion-input>
+                </ion-item>
+                <div class="validation-errors">
+                  <ng-container
+                    *ngFor="let validation of validation_messages.password"
+                  >
+                    <div
+                      class="error-message"
+                      *ngIf="validationForm.get('password').hasError(validation.type) && (validationForm.get('password').dirty || validationForm.get('password').touched)"
+                    >
+                      {{ validation.message }}
+                    </div>
+                  </ng-container>
+                </div>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+
+            <div class="ion-text-center ion-padding ion-margin">
+              <ion-button
+                color="success"
+                class="submit-btn"
+                type="submit"
+                [disabled]="!validationForm.valid"
+                >Login</ion-button
+              >
+            </div>
+            <label class="error-message">{{errorMessage}}</label>
+          </form>
+          <p class="go-to-register">
+            No account yet?
+            <a (click)="goToRegisterPage()">Create an account.</a>
+          </p>
+
+          <div class="ion-margin">
+            <a routerLink="#" style="text-decoration: none;"
+              >Forgotten Password?</a
+            >
+          </div>
+          <!--<span class="divider line one-line">or</span>
+
+            <ion-button color="danger">
+              <div class="ion-padding-end">Login with Google</div>
+              <ion-icon name="logo-google"></ion-icon>
+            </ion-button> -->
+        </ion-grid>
+      </ion-card>
+    </div>
+  </ion-list>
+</ion-content>

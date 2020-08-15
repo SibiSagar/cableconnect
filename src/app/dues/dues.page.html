@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Dues</ion-title>
+
+    <div slot="end" style="margin-right: 10px;">
+      <ion-button size="small" type="submit" fill="outline" color="light"
+        >Logout
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <div class="ion-text-center ion-padding" style="margin-top: 100px;">
+      <ion-row>
+        <ion-col size-xs="4" size-lg="4" *ngFor="let item of monthList">
+          <ion-button
+            color="danger"
+            [disabled]="item.isPaid"
+            [routerLink]="['/dues','duepay',item.id]"
+            >{{item.month}}</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

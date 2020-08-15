@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Duepay</ion-title>
+    <div slot="end" style="margin-right: 10px;">
+      <ion-button size="small" type="submit" fill="outline" color="light"
+        >Logout
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-grid>
+  <h3 style="color: black;">Payment Status:</h3>
+  <hr />
+  <div class="ion-text-center">
+    <b style="font-size: medium;"
+      >Your payment due for
+      <span style="color: red;">{{currentMonth.month}}</span> is 1200 INR</b
+    >
+  </div>
+  <div class="ion-text-center ion-padding">
+    <img src="https://img.icons8.com/cotton/2x/gps-searching.png" />
+  </div>
+
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">Comments</ion-label>
+        <ion-textarea [(ngModel)]="currentMonth.comment"></ion-textarea>
+      </ion-item>
+      <br />
+      <b style="font-size: small;"
+        ><span style="font-size: large; color: red;">*</span> Enter your
+        Feedback on the subscription
+      </b>
+      <br />
+      <br />
+      <ion-button color="primary" expand="full" (click)="payFunc()"
+        >PAY</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-grid>

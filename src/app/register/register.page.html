@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register User</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list class="ion-padding">
+    <ion-card>
+      <div class="ion-text-center ion-padding-top">
+        <b style="font-size: large; color: #7a92f3;"
+          >Welcome To Cable Connect</b
+        >
+      </div>
+
+      <div class="ion-text-center ion-padding">
+        <b>Life made simple</b>
+      </div>
+    </ion-card>
+
+    <div class="ion-text-center ion-padding-top">
+      <ion-card>
+        <ion-grid>
+          <div class="ion-text-center">
+            <ion-row>
+              <ion-col>
+                <h4 style="font-weight: 700; font-size: xx-large;">
+                  Signup
+                </h4>
+              </ion-col>
+            </ion-row>
+          </div>
+          <form
+            [formGroup]="validationForm"
+            (ngSubmit)="tryRegister(validationForm.value)"
+          >
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <ion-item>
+                  <ion-label position="floating">Username</ion-label>
+                  <ion-input type="text" formControlName="Username"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+            <div class="validation-errors">
+              <ng-container
+                *ngFor="let validation of validation_messages.username"
+              >
+                <div
+                  class="error-message"
+                  *ngIf="validationForm.get('Username').hasError(validation.type) && (validationForm.get('Username').dirty || validationForm.get('Username').touched)"
+                >
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+
+            <br />
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-input
+                    type="Password"
+                    formControlName="password"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+            <div class="validation-errors">
+              <ng-container
+                *ngFor="let validation of validation_messages.password"
+              >
+                <div
+                  class="error-message"
+                  *ngIf="validationForm.get('password').hasError(validation.type) && (validationForm.get('password').dirty || validationForm.get('password').touched)"
+                >
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <br />
+
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <ion-item>
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input type="email" formControlName="email"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+            <div class="validation-errors">
+              <ng-container
+                *ngFor="let validation of validation_messages.email"
+              >
+                <div
+                  class="error-message"
+                  *ngIf="validationForm.get('email').hasError(validation.type) && (validationForm.get('email').dirty || validationForm.get('email').touched)"
+                >
+                  {{ validation.message }}
+                </div>
+              </ng-container>
+            </div>
+            <br />
+            <!-- -->
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <ion-item>
+                  <ion-input
+                    type="date"
+                    placeholder="DOB"
+                    formControlName="date"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+            <br />
+            <ion-row>
+              <ion-col size="2"></ion-col>
+              <ion-col size="8">
+                <div class="ion-text-left">
+                  <ion-col
+                    >By clicking "Continue", you agree to the Terms and Privacy
+                    Policy</ion-col
+                  >
+                  <ion-col>
+                    <ion-checkbox checked></ion-checkbox>
+                  </ion-col>
+                </div>
+              </ion-col>
+              <ion-col size="2"></ion-col>
+            </ion-row>
+
+            <div class="ion-text-center ion-padding ion-margin">
+              <ion-button
+                type="submit"
+                size="large"
+                fill="outline"
+                [disabled]="!validationForm.valid"
+                >Signup</ion-button
+              >
+
+              <br />
+              <br />
+              <label class="error-message">{{errorMessage}}</label>
+              <label class="success-message">{{successMessage}}</label>
+            </div>
+          </form>
+          <p class="go-to-login">
+            Already have an account?
+            <a (click)="goLoginPage()">Try to Log In.</a>
+          </p>
+        </ion-grid>
+      </ion-card>
+    </div>
+  </ion-list>
+</ion-content>
